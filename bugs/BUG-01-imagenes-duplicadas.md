@@ -34,7 +34,9 @@ Los 6 productos muestran la misma imagen. Todas las etiquetas `<img>` apuntan al
 
 ## Evidencia
 - Prueba automatizada que lo detecta: [`tests/known-bugs/problem-user.spec.ts`](https://github.com/yaquelin2305/playwright-e2e-saucedemo/blob/main/tests/known-bugs/problem-user.spec.ts) (BUG-01)
-- Captura de pantalla: `evidencias/BUG-01.png`
+- Captura de pantalla:
+
+![Catálogo de problem_user con todas las imágenes iguales](../evidencias/BUG-01.png)
 
 ## Impacto
 El cliente no puede identificar visualmente los productos, lo que puede llevar a compras equivocadas y afecta la confianza en la tienda.
