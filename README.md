@@ -64,4 +64,4 @@ formato de importación de Jira + Xray · Playwright · GitHub Actions
 ---
 
 👩‍💻 **Yaquelin Rugel Alvarado**, QA Analyst Jr ·
-[LinkedIn](https://linkedin.com/in/yaquelin-rugel) · [GitHub](https://github.com/yaquelin2305)
+[LinkedIn](https://www.linkedin.com/in/yaquelin-rugel-alvarado-67a4a942b) · [GitHub](https://github.com/yaquelin2305)
