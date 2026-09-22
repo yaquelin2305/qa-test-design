@@ -1,0 +1,56 @@
+﻿ID,Resumen,Requisito,Módulo,Prioridad,Tipo,Técnica de diseño,Precondiciones,Pasos,Resultado esperado,Automatizado,Script / Referencia
+LOGIN-01,Login exitoso con usuario estándar,REQ-01,Autenticación,Alta,Funcional positivo,Partición de equivalencia,Estar en la página de login (sin sesión),"1. Ingresar usuario standard_user
+2. Ingresar contraseña secret_sauce
+3. Clic en Login",Se muestra el catálogo 'Products' con 6 productos,Sí,login.spec.ts
+LOGIN-02,Logout y bloqueo de acceso directo sin sesión,REQ-02,Autenticación,Alta,Funcional / Seguridad básica,Transición de estados,Sesión iniciada como standard_user,"1. Abrir el menú lateral
+2. Clic en Logout
+3. Navegar directo a /inventory.html","Vuelve al login; al acceder directo se muestra ""You can only access '/inventory.html' when you are logged in.""",Sí,login.spec.ts
+LOGIN-03,Login rechazado: usuario bloqueado,REQ-01,Autenticación,Alta,Funcional negativo,Tabla de decisión,Estar en la página de login (sin sesión),"1. Ingresar locked_out_user / secret_sauce
+2. Clic en Login","Mensaje 'Epic sadface: Sorry, this user has been locked out.'",Sí,login.spec.ts
+LOGIN-04,Login rechazado: contraseña incorrecta,REQ-01,Autenticación,Media,Funcional negativo,Tabla de decisión,Estar en la página de login (sin sesión),"1. Ingresar standard_user / clave_incorrecta
+2. Clic en Login",Mensaje 'Username and password do not match any user in this service',Sí,login.spec.ts
+LOGIN-05,Login rechazado: usuario vacío,REQ-01,Autenticación,Media,Funcional negativo,Partición de equivalencia,Estar en la página de login (sin sesión),"1. Dejar usuario vacío
+2. Ingresar contraseña
+3. Clic en Login",Mensaje 'Epic sadface: Username is required',Sí,login.spec.ts
+LOGIN-06,Login rechazado: contraseña vacía,REQ-01,Autenticación,Media,Funcional negativo,Tabla de decisión,Estar en la página de login (sin sesión),"1. Ingresar standard_user
+2. Dejar contraseña vacía
+3. Clic en Login",Mensaje 'Epic sadface: Password is required',Sí,login.spec.ts
+LOGIN-07,Login rechazado: usuario inexistente,REQ-01,Autenticación,Baja,Funcional negativo,Partición de equivalencia,Estar en la página de login (sin sesión),"1. Ingresar usuario_que_no_existe / secret_sauce
+2. Clic en Login",Mensaje 'Username and password do not match any user in this service',Sí,login.spec.ts
+INV-01,"El catálogo muestra 6 productos con nombre, precio e imagen",REQ-03,Catálogo,Alta,Funcional positivo,Basada en requisitos,Sesión iniciada como standard_user,"1. Abrir /inventory.html
+2. Revisar cada tarjeta de producto","6 productos, cada uno con nombre, precio > 0 e imagen",Sí,sorting.spec.ts
+INV-02,Ordenar por nombre A→Z,REQ-04,Catálogo,Media,Funcional positivo,Basada en requisitos,Sesión iniciada como standard_user,1. Elegir 'Name (A to Z)',Nombres en orden alfabético ascendente,Sí,sorting.spec.ts
+INV-03,Ordenar por nombre Z→A,REQ-04,Catálogo,Media,Funcional positivo,Basada en requisitos,Sesión iniciada como standard_user,1. Elegir 'Name (Z to A)',Nombres en orden alfabético descendente,Sí,sorting.spec.ts
+INV-04,Ordenar por precio de menor a mayor,REQ-04,Catálogo,Media,Funcional positivo,Basada en requisitos,Sesión iniciada como standard_user,1. Elegir 'Price (low to high)',Precios en orden ascendente,Sí,sorting.spec.ts
+INV-05,Ordenar por precio de mayor a menor,REQ-04,Catálogo,Media,Funcional positivo,Basada en requisitos,Sesión iniciada como standard_user,1. Elegir 'Price (high to low)',Precios en orden descendente,Sí,sorting.spec.ts
+INV-06,Detalle de producto con el mismo precio que el catálogo,REQ-03,Catálogo,Media,Funcional positivo,Basada en requisitos,Sesión iniciada como standard_user,"1. Anotar el precio de 'Sauce Labs Fleece Jacket'
+2. Clic en su nombre",El detalle muestra el mismo nombre y precio ($49.99),Sí,sorting.spec.ts
+CART-01,Agregar un producto actualiza contador y botón,REQ-05,Carrito,Alta,Funcional positivo,Valores límite (1),Sesión iniciada como standard_user,1. Clic en 'Add to cart' de Sauce Labs Backpack,Contador del carrito = 1; el botón cambia a 'Remove',Sí,cart.spec.ts
+CART-02,Agregar varios productos y verlos en el carrito,REQ-05,Carrito,Alta,Funcional positivo,Basada en requisitos,Sesión iniciada como standard_user,"1. Agregar Backpack, Bike Light y Onesie
+2. Abrir el carrito",Contador = 3; el carrito lista los 3 productos en el orden agregado,Sí,cart.spec.ts
+CART-03,Quitar un producto desde el carrito,REQ-05,Carrito,Media,Funcional positivo,Basada en requisitos,Sesión iniciada como standard_user y 2 productos en el carrito,"1. Abrir el carrito
+2. Clic en 'Remove' de Backpack",Queda 1 producto; contador = 1,Sí,cart.spec.ts
+CART-04,Quitar el último producto oculta el contador,REQ-05,Carrito,Media,Funcional positivo,Valores límite (0),Sesión iniciada como standard_user y 1 producto en el carrito,1. Clic en 'Remove' del producto,El contador desaparece; el botón vuelve a 'Add to cart',Sí,cart.spec.ts
+CART-05,El carrito persiste al recargar la página,REQ-05,Carrito,Media,Funcional positivo,Error guessing,Sesión iniciada como standard_user y 1 producto en el carrito,"1. Recargar la página (F5)
+2. Abrir el carrito",El contador sigue en 1 y el producto está en el carrito,Sí,cart.spec.ts
+CART-06,'Continue Shopping' vuelve al catálogo sin perder productos,REQ-05,Carrito,Baja,Funcional positivo,Transición de estados,Sesión iniciada como standard_user y 1 producto en el carrito,"1. Abrir el carrito
+2. Clic en 'Continue Shopping'",Vuelve a /inventory.html; contador = 1,Sí,cart.spec.ts
+CART-07,Carrito con 5 productos,REQ-05,Carrito,Baja,Funcional positivo,Valores límite (máx − 1),Sesión iniciada como standard_user,1. Agregar 5 productos distintos,Contador = 5,No,Manual
+CART-08,Carrito con los 6 productos (máximo),REQ-05,Carrito,Baja,Funcional positivo,Valores límite (máx),Sesión iniciada como standard_user,1. Agregar los 6 productos,Contador = 6; todos los botones muestran 'Remove',No,Manual
+CHK-01,Compra completa de punta a punta,"REQ-06, REQ-07",Checkout,Alta,E2E,Transición de estados,Sesión iniciada como standard_user y 2 productos en el carrito,"1. Abrir el carrito → Checkout
+2. Ingresar nombre, apellido y código postal → Continue
+3. Clic en Finish",Mensaje 'Thank you for your order!'; carrito vacío,Sí,checkout.spec.ts
+CHK-02,"Cálculo de subtotal, impuesto (8 %) y total",REQ-07,Checkout,Alta,Funcional / Regla de negocio,Basada en requisitos,Sesión iniciada como standard_user con Backpack ($29.99) y Bike Light ($9.99),1. Avanzar hasta el resumen (paso 2),Subtotal $39.98 · Impuesto $3.20 · Total $43.18,Sí,checkout.spec.ts
+CHK-03,Cancelar en el resumen conserva el carrito,REQ-07,Checkout,Media,Funcional positivo,Transición de estados,Sesión iniciada como standard_user en el resumen de compra,1. Clic en Cancel,Vuelve al catálogo; el contador mantiene los productos,Sí,checkout.spec.ts
+CHK-04,El formulario exige el nombre,REQ-06,Checkout,Media,Funcional negativo,Partición de equivalencia,Sesión iniciada como standard_user en el paso 1 del checkout,"1. Dejar el nombre vacío
+2. Completar apellido y código postal
+3. Clic en Continue",'Error: First Name is required'; no avanza,Sí,checkout.spec.ts
+CHK-05,El formulario exige el apellido,REQ-06,Checkout,Media,Funcional negativo,Partición de equivalencia,Sesión iniciada como standard_user en el paso 1 del checkout,"1. Dejar el apellido vacío
+2. Completar el resto
+3. Clic en Continue",'Error: Last Name is required'; no avanza,Sí,checkout.spec.ts
+CHK-06,El formulario exige el código postal,REQ-06,Checkout,Media,Funcional negativo,Partición de equivalencia,Sesión iniciada como standard_user en el paso 1 del checkout,"1. Dejar el código postal vacío
+2. Completar el resto
+3. Clic en Continue",'Error: Postal Code is required'; no avanza,Sí,checkout.spec.ts
+A11Y-01,Login sin violaciones WCAG 2.1 A/AA,REQ-08,Accesibilidad,Media,No funcional,Análisis automático (axe-core),Estar en la página de login (sin sesión),1. Ejecutar axe-core sobre la página,0 violaciones,Sí,accessibility.spec.ts
+A11Y-02,Catálogo sin violaciones WCAG 2.1 A/AA,REQ-08,Accesibilidad,Media,No funcional,Análisis automático (axe-core),Sesión iniciada como standard_user,1. Ejecutar axe-core sobre /inventory.html,0 violaciones,Sí,accessibility.spec.ts
+MOB-01,Flujo de compra en vista móvil,"REQ-05, REQ-07",Compatibilidad,Media,Compatibilidad,Basada en riesgo,Sesión iniciada como standard_user en viewport móvil (Pixel 7),1. Ejecutar el flujo CHK-01 en móvil,La compra se completa; los elementos son visibles y clickeables,Sí,Proyecto mobile-chrome
