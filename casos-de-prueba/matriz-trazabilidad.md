@@ -22,7 +22,7 @@ Sirve para asegurar que ningún requisito quede sin probar y para medir la cober
 | Requisitos con al menos un caso | 8 (100 %) |
 | Casos de prueba diseñados | 30 |
 | Casos automatizados | 28 (93 %) |
-| Casos manuales | 2 (CART-07, CART-08) |
+| Casos manuales | 2 (CART-07, CART-08), ejecutados el 22-09-2026: ✅ aprobados |
 | Defectos reportados | 2 |
 
 ## Casos por prioridad

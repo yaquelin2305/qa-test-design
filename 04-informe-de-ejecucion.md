@@ -43,6 +43,14 @@ para ese perfil y debe corregirse antes de habilitarlo.
 > Los 2 casos de defectos conocidos (BUG-01 y BUG-02) están marcados con `test.fail()`: la suite los ejecuta, **confirma que el bug sigue presente**
 > y los cuenta como resultado esperado. Si el defecto se corrige, la prueba avisará para retirar la marca.
 
+### Ejecución manual
+
+| Caso | Descripción | Resultado esperado | Resultado obtenido | Estado |
+|---|---|---|---|---|
+| CART-07 | Carrito con 5 productos (valor límite máx − 1) | Contador = 5 | El contador mostró 5 | ✅ Aprobado |
+| CART-08 | Carrito con los 6 productos (valor límite máx) | Contador = 6 y todos los botones en "Remove" | El contador mostró 6 | ✅ Aprobado |
+| CHK-01 (`problem_user`) | Checkout con el perfil `problem_user` | El apellido se escribe en *Last Name* | Cada tecla reemplaza *First Name* → [BUG-02](bugs/BUG-02-apellido-no-editable.md) | ❌ Defecto |
+
 📈 Reporte Allure en vivo: https://yaquelin2305.github.io/playwright-e2e-saucedemo/
 
 ### Resultados por módulo
@@ -85,5 +93,5 @@ manualmente, y conviene preferir localizadores por **rol accesible**.
 
 1. Corregir **BUG-02** (P1) antes de habilitar el perfil afectado.
 2. Agregar validación de formato al código postal (mejora; hoy acepta cualquier texto).
-3. Automatizar CART-07 y CART-08 (valores límite del carrito) en el próximo ciclo.
-4. Incorporar pruebas de rendimiento para el login de `performance_glitch_user`.
+3. Automatizar CART-07 y CART-08 (valores límite del carrito, hoy aprobados de forma manual) en el próximo ciclo.
+4. Medir el tiempo de respuesta del login con `performance_glitch_user` e incorporar pruebas de rendimiento.

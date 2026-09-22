@@ -111,4 +111,4 @@ stateDiagram-v2
 | **Misión** | Explorar el checkout con distintos usuarios de prueba para descubrir comportamientos inconsistentes |
 | **Duración** | 30 minutos |
 | **Datos** | `problem_user`, `error_user`, `performance_glitch_user` |
-| **Hallazgos** | BUG-02 (apellido no editable). Login lento con `performance_glitch_user` (observación de rendimiento). |
+| **Hallazgos** | BUG-02: en *Last Name*, cada tecla reemplaza el valor de *First Name* (hallado de forma manual). |
